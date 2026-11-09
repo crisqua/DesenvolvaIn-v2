@@ -33,26 +33,54 @@
   .btn-ghost:hover { border-color: var(--border-hover); background: rgba(var(--ink),.04); }
   .hoverlift:hover { border-color: var(--border-hover); transform: translateY(-3px); }
   .navlink:hover { color: var(--white) !important; }
-  /* ===== Ajustes para celular ===== */
-  @media (max-width: 720px) {
-    /* Grades de cards: 1 coluna */
-    [style*="grid-template-columns: repeat(3"],
-    [style*="grid-template-columns: repeat(2"] {
-      grid-template-columns: 1fr !important;
-    }
-    /* Rodape: slogan sai do absolute e empilha */
+  /* ===== Ajustes responsivos ===== */
+  /* Rodape: abaixo de 1320px o slogan centralizado (absolute) sobrepunha logo e copyright */
+  @media (max-width: 1320px) {
     footer {
       justify-content: center !important;
-      text-align: center;
       flex-direction: column;
+      text-align: center;
+      gap: .9rem !important;
     }
     footer [style*="position: absolute"] {
       position: static !important;
       transform: none !important;
       white-space: normal !important;
-      order: -1;
+      font-size: .8rem !important;
+      letter-spacing: .12em !important;
     }
-    /* Funil: esconde conectores soltos e da respiro entre etapas */
+  }
+  /* Cabecalho compacto: logo + Contato na 1a linha, links na 2a */
+  @media (max-width: 800px) {
+    nav {
+      padding: .6rem 1.25rem !important;
+      gap: .4rem .75rem !important;
+    }
+    nav > a:first-child { order: 1; }
+    nav > a:last-child {
+      order: 2;
+      padding: .45rem 1rem !important;
+      font-size: .72rem !important;
+    }
+    nav ul {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: 1.5rem !important;
+    }
+    nav > a:first-child span[style*="font-family: var(--font-mono)"] { display: none; }
+    nav > a:first-child span[style*="letter-spacing: .14em"] {
+      white-space: nowrap;
+      font-size: .85rem !important;
+      letter-spacing: .1em !important;
+    }
+  }
+  /* Grades de cards e funil */
+  @media (max-width: 720px) {
+    [style*="grid-template-columns: repeat(3"],
+    [style*="grid-template-columns: repeat(2"] {
+      grid-template-columns: 1fr !important;
+    }
     [style*="width: 42px; height: 92px"] { display: none !important; }
     [style*="align-items: flex-start; flex-wrap: wrap"] {
       gap: 2rem 1rem !important;
