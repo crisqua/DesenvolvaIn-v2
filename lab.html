@@ -41,6 +41,31 @@
   .gear-main { animation: gearSpin 8s linear infinite; transform-box: fill-box; transform-origin: 160px 160px; }
   .gear-val  { animation: gearSpinRev 12s linear infinite; transform-box: fill-box; transform-origin: 60px 160px; }
   .gear-mvp  { animation: gearSpinRev 10s linear infinite; transform-box: fill-box; transform-origin: 260px 160px; }
+  /* ===== Ajustes para celular ===== */
+  @media (max-width: 720px) {
+    /* Grades de cards: 1 coluna */
+    [style*="grid-template-columns: repeat(3"],
+    [style*="grid-template-columns: repeat(2"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* Rodape: slogan sai do absolute e empilha */
+    footer {
+      justify-content: center !important;
+      text-align: center;
+      flex-direction: column;
+    }
+    footer [style*="position: absolute"] {
+      position: static !important;
+      transform: none !important;
+      white-space: normal !important;
+      order: -1;
+    }
+    /* Funil: esconde conectores soltos e da respiro entre etapas */
+    [style*="width: 42px; height: 92px"] { display: none !important; }
+    [style*="align-items: flex-start; flex-wrap: wrap"] {
+      gap: 2rem 1rem !important;
+    }
+  }
 </style>
 </head>
 <body>
