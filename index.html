@@ -83,9 +83,37 @@
     [style*="grid-template-columns: repeat(2"] {
       grid-template-columns: 1fr !important;
     }
-    [style*="width: 42px; height: 92px"] { display: none !important; }
+  }
+  /* Funil "Como funciona": horizontal compacto no tablet, linha do tempo vertical no celular */
+  @media (max-width: 980px) {
+    [style*="width: 140px"] { width: 116px !important; }
+    [style*="width: 42px; height: 92px"] { width: 24px !important; }
+  }
+  @media (max-width: 780px) {
     [style*="align-items: flex-start; flex-wrap: wrap"] {
-      gap: 2rem 1rem !important;
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    [style*="width: 140px"] {
+      width: 100% !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      text-align: left !important;
+      gap: 1.1rem !important;
+    }
+    [style*="width: 140px"] > div:first-child { flex-shrink: 0; }
+    [style*="width: 42px; height: 92px"] {
+      width: 92px !important;
+      height: 26px !important;
+    }
+    [style*="width: 42px; height: 92px"] > div {
+      width: 2px !important;
+      height: 100% !important;
     }
   }
 </style>
