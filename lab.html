@@ -41,6 +41,87 @@
   .gear-main { animation: gearSpin 8s linear infinite; transform-box: fill-box; transform-origin: 160px 160px; }
   .gear-val  { animation: gearSpinRev 12s linear infinite; transform-box: fill-box; transform-origin: 60px 160px; }
   .gear-mvp  { animation: gearSpinRev 10s linear infinite; transform-box: fill-box; transform-origin: 260px 160px; }
+  /* ===== Ajustes responsivos ===== */
+  /* Rodape: abaixo de 1320px o slogan centralizado (absolute) sobrepunha logo e copyright */
+  @media (max-width: 1320px) {
+    footer {
+      justify-content: center !important;
+      flex-direction: column;
+      text-align: center;
+      gap: .9rem !important;
+    }
+    footer [style*="position: absolute"] {
+      position: static !important;
+      transform: none !important;
+      white-space: normal !important;
+      font-size: .8rem !important;
+      letter-spacing: .12em !important;
+    }
+  }
+  /* Cabecalho compacto: logo + Contato na 1a linha, links na 2a */
+  @media (max-width: 800px) {
+    nav {
+      padding: .6rem 1.25rem !important;
+      gap: .4rem .75rem !important;
+    }
+    nav > a:first-child { order: 1; }
+    nav > a:last-child {
+      order: 2;
+      padding: .45rem 1rem !important;
+      font-size: .72rem !important;
+    }
+    nav ul {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: 1.5rem !important;
+    }
+    nav > a:first-child span[style*="font-family: var(--font-mono)"] { display: none; }
+    nav > a:first-child span[style*="letter-spacing: .14em"] {
+      white-space: nowrap;
+      font-size: .85rem !important;
+      letter-spacing: .1em !important;
+    }
+  }
+  /* Grades de cards e funil */
+  @media (max-width: 720px) {
+    [style*="grid-template-columns: repeat(3"],
+    [style*="grid-template-columns: repeat(2"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  /* Funil "Como funciona": horizontal compacto no tablet, linha do tempo vertical no celular */
+  @media (max-width: 980px) {
+    [style*="width: 140px"] { width: 116px !important; }
+    [style*="width: 42px; height: 92px"] { width: 24px !important; }
+  }
+  @media (max-width: 780px) {
+    [style*="align-items: flex-start; flex-wrap: wrap"] {
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    [style*="width: 140px"] {
+      width: 100% !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      text-align: left !important;
+      gap: 1.1rem !important;
+    }
+    [style*="width: 140px"] > div:first-child { flex-shrink: 0; }
+    [style*="width: 42px; height: 92px"] {
+      width: 92px !important;
+      height: 26px !important;
+    }
+    [style*="width: 42px; height: 92px"] > div {
+      width: 2px !important;
+      height: 100% !important;
+    }
+  }
 </style>
 </head>
 <body>
